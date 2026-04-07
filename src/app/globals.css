@@ -1,26 +1,110 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* WindMar Brand — Light Mode Base */
+  --color-wm-primary: #1D429B;
+  --color-wm-primary-dark: #21366B;
+  --color-wm-primary-light: #A6C3E6;
+  --color-wm-accent: #F89B24;
+  --color-wm-surface: #FFFFFF;
+  --color-wm-surface-alt: #F5F7FA;
+  --color-wm-text: #1A1A1A;
+  --color-wm-text-secondary: #666666;
+  --color-wm-border: #E2E8F0;
+  --color-wm-success: #16A34A;
+  --color-wm-warning: #F89B24;
+  --color-wm-danger: #DC2626;
+  --color-wm-info: #3B82F6;
+
+  /* Dark Mode */
+  --color-dark-primary: #4A7AE5;
+  --color-dark-primary-dark: #1D429B;
+  --color-dark-primary-light: #1E3A5F;
+  --color-dark-accent: #F89B24;
+  --color-dark-bg: #0F1923;
+  --color-dark-surface: #141F2B;
+  --color-dark-surface-elevated: #1A2736;
+  --color-dark-text: #E8EDF3;
+  --color-dark-text-secondary: #8899AA;
+  --color-dark-border: #243447;
+  --color-dark-success: #22C55E;
+  --color-dark-warning: #FBBF24;
+  --color-dark-danger: #EF4444;
+  --color-dark-info: #60A5FA;
+  --color-dark-glow: rgba(74,122,229,0.15);
+
+  /* Component tokens */
+  --card-radius: 12px;
+  --card-padding: 24px;
+  --card-shadow-light: 0 2px 8px rgba(0,0,0,0.08);
+  --card-shadow-dark: 0 2px 12px rgba(0,0,0,0.3);
+  --btn-radius: 8px;
+  --btn-radius-pill: 24px;
+  --panel-backdrop: blur(12px);
+  --panel-bg-dark: rgba(15,25,35,0.85);
+  --panel-bg-light: rgba(255,255,255,0.92);
+  --ring-active: var(--color-wm-accent);
+  --ring-idle: var(--color-wm-primary-light);
+  --ring-error: var(--color-wm-danger);
+
+  /* Fonts */
+  --font-outfit: "Outfit", sans-serif;
+  --font-inter: "Inter", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Light mode (default) */
+:root {
+  --bg: var(--color-wm-surface-alt);
+  --surface: var(--color-wm-surface);
+  --text: var(--color-wm-text);
+  --text-secondary: var(--color-wm-text-secondary);
+  --border: var(--color-wm-border);
+  --primary: var(--color-wm-primary);
+  --accent: var(--color-wm-accent);
+  --card-shadow: var(--card-shadow-light);
+  --panel-bg: var(--panel-bg-light);
+}
+
+/* Dark mode */
+.dark {
+  --bg: var(--color-dark-bg);
+  --surface: var(--color-dark-surface);
+  --text: var(--color-dark-text);
+  --text-secondary: var(--color-dark-text-secondary);
+  --border: var(--color-dark-border);
+  --primary: var(--color-dark-primary);
+  --accent: var(--color-dark-accent);
+  --card-shadow: var(--card-shadow-dark);
+  --panel-bg: var(--panel-bg-dark);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-inter);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-outfit);
+}
+
+/* Sonar ring animation for active agents/brigades */
+@keyframes sonar-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+.sonar-ring {
+  animation: sonar-pulse 2s infinite;
+}
+
+/* Tabular numbers for KPIs and data */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
 }
